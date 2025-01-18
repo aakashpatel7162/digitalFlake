@@ -1,0 +1,50 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #662671;
+    color: #ecf0f1;
+  }
+  
+  .header-left .logo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .login-button,
+  .logout-button {
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .login-button {
+    background-color: #3498db;
+    color: #fff;
+  }
+  
+  .logout-button {
+    background-color: #e74c3c;
+    color: #fff;
+  }
+  
+  .user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .user-name {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
