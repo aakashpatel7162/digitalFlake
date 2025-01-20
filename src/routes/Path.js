@@ -1,7 +1,12 @@
 export  const paths={
-home:"/",
+home:"/home",
 add:"/add",
+dashboard:"dashboard",
 subcategory:"subcategory",
-product:"product"
+product:"product",
+list:'/list',
+login:"login",
+register:"register",
+edit:"edit"
 
 }

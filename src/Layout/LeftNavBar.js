@@ -1,32 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import "./LeftNavbar.css";
 import { useSearch } from '../pages/searchbar/SearchBarContext';
+import {  useNavigate } from "react-router-dom";
+import { rawData } from "../db/config/rawData";
+export default function LeftNavBar() {
+  const { changeSearchType } = useSearch();
+  const [searchQuery, setSearchQuery] = useState(""); 
+  const { searchType } = useSearch();
 
-export default  function LeftNavBar  ()  {
-    const { changeSearchType } = useSearch();
+ 
+  const navigate = useNavigate();
 
-  const navLinks = [
-    { name: "Home", href: "#home", image: "" },
-    { name: "About", href: "#about", image: "" },
-    { name: "Services", href: "#services", image: "" },
-    { name: "Contact", href: "#contact", image: "" },
-  ];
-
+  const handleSearchChange = (str) => {
+    const value = str.substr(1, str.length); 
+    if(value === "home") {
+      navigate("home");
+      changeSearchType("home")
+    }else{
+      navigate("dashboard");
+      setSearchQuery(value); 
+      changeSearchType(value); 
+    }
+  };
+  function formatString(str) {
+   
+    if (!str || typeof str !== 'string') return ''; 
+    return str.charAt(0).toUpperCase()+str.slice(1);
+  }
   return (
-    <nav className="left-navbar">
-      <div className="navbar-image">
-        <img src="" alt="User Avatar" />
+    <nav className="left-navbar" >
+  <ul className="navbar-links">
+    {rawData.navLinks.map((link) => (
+      <div 
+        key={link.name} 
+        className="navbar-item" 
+        onClick={() => handleSearchChange(link.href)} 
+        style={{ 
+          backgroundColor: link.name.trim() === formatString(searchType).trim() ? "#F4EDAF" :undefined
+        }}
+      >
+        <img src={link.icon}  alt="" style={{width:"30px ", height:"30px"}} />
+        <a href={link.href}>{link.name}</a>
       </div>
-      
-      <ul className="navbar-links">
-        {navLinks.map((link) => (
-          <li key={link.name} className="navbar-item">
-            <img src={link.image} alt={link.name} className="link-image" />
-            <a href={link.href}>{link.name}</a>
-          </li>
-        ))}
-      </ul>
-    </nav>
-  );
-};
+    ))}
+  </ul>
+</nav>
 
+  );
+}

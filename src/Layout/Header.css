@@ -1,50 +1,108 @@
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #662671;
-    color: #ecf0f1;
-  }
-  
-  .header-left .logo {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .header-right {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .login-button,
-  .logout-button {
-    padding: 8px 16px;
-    font-size: 14px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .login-button {
-    background-color: #3498db;
-    color: #fff;
-  }
-  
-  .logout-button {
-    background-color: #e74c3c;
-    color: #fff;
-  }
-  
-  .user-profile {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .user-name {
-    font-size: 16px;
-    font-weight: 500;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #662671;
+  color: #fff;
+}
+
+.logo {
+  width: 200px;
+  height: 35px;
+  cursor: pointer;
+}
+
+.header-right {
+  position: relative;
+}
+
+.profile-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.profile-icon {
+  width: 35px;
+  height: 35px;
+  color: #ecf0f1;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  /* background-color: #34495e; */
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  width: 150px;
+  padding: 5px;
+  text-align: left;
+}
+
+.dropdown-item {
+  padding: 10px;
+  color: #ecf0f1;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  color: red;
+}
+
+
+
+.logout-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #662671;
+}
+
+
+
+.logout-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.modal-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.confirm-btn, .cancel-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.confirm-btn {
+  background-color: #662671;
+  color: #fff;
+}
+
+.cancel-btn {
+  background-color: darkgray;
+  color: #333;
+}
