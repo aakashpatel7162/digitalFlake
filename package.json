@@ -5,6 +5,7 @@
   "dependencies": {
     "@heroicons/react": "^1.0.6",
     "@ionic/react": "^8.4.1",
+    "axios": "^1.7.9",
     "cra-template": "1.2.0",
     "ionicons": "^7.4.0",
     "react": "^19.0.0",

@@ -1,9 +1,7 @@
 .table-container {
     display: flex;
     flex-direction: column;
-    /* border: 1px solid #ddd; */
     margin-top: 20px;
-    border:1px solid red
   }
   
   .table-row {
@@ -24,8 +22,7 @@
   .table-cell {
     flex: 1;
     padding: 10px;
-    /* border: 1px solid #ddd; */
     text-align: left;
-    /* background-color: #F2F2F2; */
+    background-color: #F2F2F2;
   }
   

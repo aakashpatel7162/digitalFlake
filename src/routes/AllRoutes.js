@@ -5,8 +5,12 @@ import Dashboard from '../main/Dashboard';
 import Layout from '../Layout/Layout';
 import AddEditItemPage from '../pages/AddItems'
 import AuthModal from '../auth/AuthModal';
+import { Navigate } from 'react-router-dom';
+
 const routes = createRoutesFromElements(
   <Route>
+<Route path="/" element={<Navigate to={paths.login} replace />} />
+
   <Route path="/" element={<Layout />}>
     <Route path={paths.home} element={<Home />} />
     <Route path={paths.dashboard} element={<Dashboard />} />

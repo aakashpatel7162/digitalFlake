@@ -19,7 +19,6 @@ const handleAdd=()=>{
   return (
     <div className='searchbar'>
       <img src={image} alt="image" style={{width:"20px",height:"20px"}}/>
-      
       <label className='searchbar-label' >{label}</label>
       <input type="text" placeholder={placeholder}  className='searchbar-field'/>
       <button onClick={handleAdd} className='add-btn'>Add</button>

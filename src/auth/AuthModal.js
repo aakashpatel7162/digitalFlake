@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './AuthModal.css';
 import { Images } from '../db/config/assets/Images';
-
+import ApiServices from '../utils/ApiServices';
+import { useNavigate } from 'react-router-dom';
 export default function Auth() {
-  const [isLogin, setIsLogin] = useState(true); 
+  const [isLogin, setIsLogin] = useState(false); 
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -20,15 +21,38 @@ export default function Auth() {
       [name]: value,
     });
   };
-
+const navigate=useNavigate()
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isLogin) {
-      console.log('Logging in with:', formData);
+      const loginData={
+        email:formData.email,
+        password:formData.password
+      }
+       ApiServices("POST", "/login", loginData)
+      .then((res) => {
+        setIsLogin(true);
+        navigate('/home');
+        localStorage.setItem("token",res.token)
+
+      })
+      .catch((error) => {
+        console.error('Login failed:', error);
+      });
     } else {
       console.log('Registering with:', formData);
+      ApiServices("POST", "/register", formData)
+      .then((res) => {
+        setIsLogin(true);
+        navigate('/login');
+      })
+      .catch((error) => {
+        console.error('Register failed:', error);
+      });
+
     }
   };
+
 
   const toggleForm = () => {
     setIsLogin(!isLogin);

@@ -6,6 +6,7 @@ import { rawData } from '../db/config/rawData';
 import { PencilIcon, TrashIcon } from '@heroicons/react/solid';
 import { useNavigate } from 'react-router-dom';
 import DeleteModal from '../pages/Deletmodal/DeleteModal';
+import ApiServices from '../utils/ApiServices';
 export default function Dashboard() {
   const { searchType } = useSearch();
   const navigate = useNavigate();
@@ -13,24 +14,54 @@ export default function Dashboard() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const { categoryData, setEditItem } = useSearch();
-
-  const columnStructure = rawData.columnStructure
-
+  const [categories, setCategories] = useState([]);
+  const [subCategories, setSubCategories] = useState([]);
+  const [products, setProducts] = useState([]);
+  
+  const columnStructure = rawData.columnStructure;
+  
   useEffect(() => {
     setColumns(columnStructure[searchType] || []);
   }, [searchType]);
-
+  
+  
   const handleEdit = (itemId) => {
     navigate(`/edit`);
   };
-
-
-
-
+  
   const handleDelete = (item) => {
     setSelectedItem(item);
     setIsModalOpen(true);
   };
+  
+  useEffect(() => {
+    let url = "";
+  console.log(searchType,"searchType")
+    if (searchType === "subcategory") {
+      url = "/subcategories";
+    } else if (searchType === "Product") {
+      url = "/products";
+    } else {
+      url = "/categories";
+    }
+  
+    ApiServices("GET", url)
+      .then((res) => {
+        if (searchType === "Subcategory") {
+          setSubCategories(res);
+          console.log(res, "Subcategories data");
+        } else if (searchType === "Product") {
+          setProducts(res);
+          console.log(res, "Products data");
+        } else {
+          setCategories(res);
+          console.log(res, "Categories data");
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, [searchType]); 
 
   const handleConfirmDelete = () => {
     console.log('Deleting item:', selectedItem);
@@ -38,6 +69,7 @@ export default function Dashboard() {
   };
   const getDataBySearchType = () => {
     switch (searchType) {
+      
       case 'category':
         return rawData.categories.map((category, index) => (
           <div className="table-row" key={index}>
@@ -56,7 +88,7 @@ export default function Dashboard() {
         ));
 
       case 'subcategory':
-        return rawData.categories.flatMap((category) =>
+        return  rawData.categories.flatMap((category) =>
           category.subcategories.map((subcategory, index) => (
             <div className="table-row" key={index}>
               <div className="table-cell">{subcategory.subcategory}</div>
@@ -104,7 +136,7 @@ export default function Dashboard() {
   };
 
   return (
-    <div style={{ border: '1px solid red' }}>
+    <div >
       <SearchBar searchType={searchType} />
       <div className="table-container">
         <div className="table-row table-header">
