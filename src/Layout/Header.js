@@ -22,7 +22,6 @@ export default function Header({ isLoggedIn, userName, onLogout }) {
     setShowLogoutModal(false);
     onLogout();
   };
-
   return (
     <header className="header">
       <div className="header-left">

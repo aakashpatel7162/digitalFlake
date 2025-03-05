@@ -3,7 +3,6 @@ import { Outlet } from 'react-router-dom';
 import Header from './Header';
 import LeftNavbarLayout from './LeftNavBar';
 import { SearchProvider } from '../pages/searchbar/SearchBarContext';
-
 export default function Layout() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [userName, setUserName] = useState("");
