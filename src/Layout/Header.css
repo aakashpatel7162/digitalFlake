@@ -6,24 +6,20 @@
   background-color: #662671;
   color: #fff;
 }
-
 .logo {
   width: 200px;
   height: 35px;
   cursor: pointer;
 }
-
 .header-right {
   position: relative;
 }
-
 .profile-menu {
   position: relative;
   display: flex;
   align-items: center;
   cursor: pointer;
 }
-
 .profile-icon {
   width: 35px;
   height: 35px;
@@ -48,8 +44,6 @@
   color: red;
 }
 
-
-
 .logout-btn {
   background: none;
   border: none;
@@ -58,8 +52,6 @@
   cursor: pointer;
   background-color: #662671;
 }
-
-
 
 .logout-modal {
   position: fixed;
@@ -72,7 +64,6 @@
   align-items: center;
   justify-content: center;
 }
-
 .modal-content {
   background: #fff;
   padding: 30px;
