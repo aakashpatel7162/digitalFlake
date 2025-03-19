@@ -7,10 +7,7 @@ export default function LeftNavBar() {
   const { changeSearchType } = useSearch();
   const [searchQuery, setSearchQuery] = useState(""); 
   const { searchType } = useSearch();
-
- 
   const navigate = useNavigate();
-
   const handleSearchChange = (str) => {
     const value = str.substr(1, str.length); 
     if(value === "home") {
